@@ -1,7 +1,7 @@
 package hxfiber
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v3"
 
 	"github.com/stackus/hxgo"
 )
@@ -21,7 +21,7 @@ import (
 //   - Trigger(...events): Triggers client-side events.
 //   - TriggerAfterSettle(...events): Triggers client-side events after the settle step.
 //   - TriggerAfterSwap(...events): Triggers client-side events after the swap step.
-func Response(ctx *fiber.Ctx, options ...hx.ResponseOption) (*hx.HtmxResponse, error) {
+func Response(ctx fiber.Ctx, options ...hx.ResponseOption) (*hx.HtmxResponse, error) {
 	r, err := hx.BuildResponse(options...)
 	if err != nil {
 		return nil, err

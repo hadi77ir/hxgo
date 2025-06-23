@@ -1,7 +1,7 @@
 package hxfiber
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v3"
 
 	"github.com/stackus/hxgo"
 )
@@ -9,7 +9,7 @@ import (
 // IsBoosted checks the HX-Boosted header
 //
 // Returns true if the request is a boosted request
-func IsBoosted(ctx *fiber.Ctx) bool {
+func IsBoosted(ctx fiber.Ctx) bool {
 	return ctx.Get(hx.HxBoosted) == "true"
 }
 
@@ -17,7 +17,7 @@ func IsBoosted(ctx *fiber.Ctx) bool {
 //
 // It returns the current URL of the browser if the header exists.
 // If the header is not present, it returns an empty string.
-func GetCurrentUrl(ctx *fiber.Ctx) string {
+func GetCurrentUrl(ctx fiber.Ctx) string {
 	return ctx.Get(hx.HxCurrentUrl)
 }
 
@@ -25,7 +25,7 @@ func GetCurrentUrl(ctx *fiber.Ctx) string {
 //
 // It checks the presence of the HX-History-Restore-Request header in the request.
 // Returns true if the header is present, otherwise returns false.
-func IsHistoryRestoreRequest(ctx *fiber.Ctx) bool {
+func IsHistoryRestoreRequest(ctx fiber.Ctx) bool {
 	return ctx.Get(hx.HxHistoryRestoreRequest) != ""
 }
 
@@ -33,7 +33,7 @@ func IsHistoryRestoreRequest(ctx *fiber.Ctx) bool {
 //
 // It returns the user response to an Hx-Prompt if the header exists.
 // If the header is not present, it returns an empty string.
-func GetPrompt(ctx *fiber.Ctx) string {
+func GetPrompt(ctx fiber.Ctx) string {
 	return ctx.Get(hx.HxPrompt)
 }
 
@@ -41,14 +41,14 @@ func GetPrompt(ctx *fiber.Ctx) string {
 //
 // It checks the presence of the HX-Request header in the request.
 // Returns true if the header is present, otherwise returns false.
-func IsRequest(ctx *fiber.Ctx) bool {
+func IsRequest(ctx fiber.Ctx) bool {
 	return ctx.Get(hx.HxRequest) != ""
 }
 
 // IsHtmx determines if an HTTP request is an HTMX request.
 //
 // Does the same thing as IsRequest, only with a more user-friendly name.
-func IsHtmx(ctx *fiber.Ctx) bool {
+func IsHtmx(ctx fiber.Ctx) bool {
 	return IsRequest(ctx)
 }
 
@@ -56,7 +56,7 @@ func IsHtmx(ctx *fiber.Ctx) bool {
 //
 // It returns the ID of the target element if the header exists.
 // If the header is not present, it returns an empty string.
-func GetTarget(ctx *fiber.Ctx) string {
+func GetTarget(ctx fiber.Ctx) string {
 	return ctx.Get(hx.HxTarget)
 }
 
@@ -64,7 +64,7 @@ func GetTarget(ctx *fiber.Ctx) string {
 //
 // It returns the name of the triggered element if the header exists.
 // If the header is not present, it returns an empty string.
-func GetTriggerName(ctx *fiber.Ctx) string {
+func GetTriggerName(ctx fiber.Ctx) string {
 	return ctx.Get(hx.HxTriggerName)
 }
 
@@ -72,6 +72,6 @@ func GetTriggerName(ctx *fiber.Ctx) string {
 //
 // It returns the ID of the trigger element if the header exists.
 // If the header is not present, it returns an empty string.
-func GetTrigger(ctx *fiber.Ctx) string {
+func GetTrigger(ctx fiber.Ctx) string {
 	return ctx.Get(hx.HxTrigger)
 }
